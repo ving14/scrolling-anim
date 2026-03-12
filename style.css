@@ -1,25 +1,9 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  min-height: 300vh; /* needed for scroll-triggered animation */
-  background: #171717;
-  font-family: Arial, sans-serif;
-  color: white;
-
-  /* hide scrollbar but keep scrolling */
-  scrollbar-width: none;         /* Firefox */
-  -ms-overflow-style: none;      /* IE/old Edge */
-}
-
-html::-webkit-scrollbar,
-body::-webkit-scrollbar {
-  display: none;                 /* Chrome/Safari */
-}
-
 body {
-  overflow-x: hidden;
-  overflow-y: auto;
+  background: #171717;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  color: white;
 }
 
 .gap {
@@ -69,24 +53,25 @@ h1 {
   margin: 0 auto;
 }
 
-.canvas-container {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  display: grid;
-  place-content: center;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  box-sizing: border-box;
-}
-
 canvas {
   pointer-events: none;
-  display: block;
-  width: min(1200px, 100vw);
+  width: min(1200px, 100%);
   height: auto;
-  max-width: 100%;
+}
+
+.canvas-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  padding: 1em;
+  width: calc(100% - 8em);
+  height: calc(100vh - 8em);
+  border: 1px solid white;
+  display: grid;
+  place-content: center;
+  box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
@@ -106,8 +91,8 @@ canvas {
     font-size: 6rem;
   }
 
-  canvas {
-    width: 100vw;
-    height: auto;
+  .canvas-container {
+    width: calc(100% - 2em);
+    height: calc(100vh - 2em);
   }
 }
